@@ -29,10 +29,10 @@ public class Start extends JPanel {
   //Initialize
   private ChessBoard cb;
   //Default using 7*6 Board
-  private int Row = 6;
-  private int Col = 7;
+  private int boardRow = 6;
+  private int boardCol = 7;
   //Board declaration
-  private int[][] chesses = new int[Row][Col];
+  private int[][] chesses = new int[boardRow][boardCol];
   //BoardSize setting, boardsize = 0 means 7*6 ; boardsize = 1 means 8*7
   private int boardSize = 0;
   //Color and integer correlation
@@ -129,9 +129,9 @@ public class Start extends JPanel {
     if (this.boardSize == 0) {
       jbtn8.setEnabled(false);
     } else {
-      Start.this.Row = 7;
-      Start.this.Col = 8;
-      chesses = new int[Row][Col];
+      Start.this.boardRow = 7;
+      Start.this.boardCol = 8;
+      chesses = new int[boardRow][boardCol];
     }
     //ImageIO.read may throw an exception, hence using try_catch here
     try {
@@ -171,7 +171,7 @@ public class Start extends JPanel {
           JOptionPane.showMessageDialog(Start.this, "This column is full!!",
                                         "WARN", JOptionPane.INFORMATION_MESSAGE);
         } else {
-          for (int i = Row - 1; i >= 0; i--) {
+          for (int i = boardRow - 1; i >= 0; i--) {
             if (chesses[i][ buttonNumber - 1] == NONE) {
               chesses[i][ buttonNumber - 1] = currentColor;
               goOneStep(i,  buttonNumber - 1, currentColor);
@@ -200,8 +200,8 @@ public class Start extends JPanel {
     for (int i = 0; i <= 9; i++) {
       g.drawLine(i * 70, 40, i * 70, 460);
     }
-    for (int i = 0; i < Row; i++) {
-      for (int j = 0; j < Col; j++) {
+    for (int i = 0; i < boardRow; i++) {
+      for (int j = 0; j < boardCol; j++) {
         if (chesses[i][j] == BLACK) {
           drawPiece(i, j, blackImage, g);
         } else if (chesses[i][j] == WHITE) {
@@ -280,7 +280,7 @@ public class Start extends JPanel {
     int max = 0;
     int temp = 0;
     //determining if vertically connect four
-    for (int i = 0; i < Col; i++) {
+    for (int i = 0; i < boardCol; i++) {
       if (chesses[row][i] == color) {
         temp++;
         if (max < temp) {
@@ -296,7 +296,7 @@ public class Start extends JPanel {
     //determining if horizontally connect four
     temp = 0;
     max = 0;
-    for (int i = 0; i < Row; i++) {
+    for (int i = 0; i < boardRow; i++) {
       if (chesses[i][col] == color) {
         temp++;
         if (max < temp) {
@@ -324,13 +324,13 @@ public class Start extends JPanel {
     int max = 0;
     int x = row;
     int y = col;
-    while (x >= 0 && x < Row && y >= 0 && y < Col && chesses[x][y] == color) {
+    while (x >= 0 && x < boardRow && y >= 0 && y < boardCol && chesses[x][y] == color) {
       x--;
       y--;
     }
     x++;
     y++;
-    while (x >= 0 && x < Row && y >= 0 && y < Col && chesses[x][y] == color) {
+    while (x >= 0 && x < boardRow && y >= 0 && y < boardCol && chesses[x][y] == color) {
       max++;
       x++;
       y++;
@@ -342,13 +342,13 @@ public class Start extends JPanel {
     x = row;
     y = col;
     max = 0;
-    while (x >= 0 && x < Row && y >= 0 && y < Col && chesses[x][y] == color) {
+    while (x >= 0 && x < boardRow && y >= 0 && y < boardCol && chesses[x][y] == color) {
       x--;
       y++;
     }
     x++;
     y--;
-    while (x >= 0 && x < Row && y >= 0 && y < Col && chesses[x][y] == color) {
+    while (x >= 0 && x < boardRow && y >= 0 && y < boardCol && chesses[x][y] == color) {
       max++;
       x++;
       y--;
@@ -373,10 +373,10 @@ public class Start extends JPanel {
     int row = 0;
     //generate random number to move a piece
     do {
-      cal = new Random().nextInt(Col);
+      cal = new Random().nextInt(boardCol);
     } while (chesses[0][cal] != NONE);
     
-    for (int i = Row - 1; i >= 0; i--) {
+    for (int i = boardRow - 1; i >= 0; i--) {
       if (chesses[i][cal] == NONE) {
         chesses[i][cal] = aiColor;
         row = i;
@@ -406,7 +406,7 @@ public class Start extends JPanel {
 
   //Determining if the board is Full!!
   private boolean isFull() {
-    for (int i = 0; i < Col; i++) {
+    for (int i = 0; i < boardCol; i++) {
       if (chesses[0][i] == NONE) {
         return false;
       }
