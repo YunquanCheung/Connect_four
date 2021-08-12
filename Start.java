@@ -4,7 +4,7 @@
 
        This class is what the program would run after clicking the "play" button.
        It draws all the board and pieces after player or computer make a move.
-       Then it judges whether there is a winner or whether the board is filled(tie).
+       Then it judges whether there is a winner or whether the board is filled( tie ).
        If not, then it keeps going.
 
        It interacts with 2 classes.
