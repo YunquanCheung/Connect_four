@@ -103,7 +103,8 @@ public class ChessBoard extends JFrame implements ActionListener {
     jbtnPlay.setLocation(400, 0);
     jbtnPlay.setEnabled(true);
     jbtnPlay.setVisible(true);
-    jbtnPlay.addActionListener(btPlayListener());//call btPlayListener belows which illustrates how it works there
+    //call btPlayListener belows which illustrates how it works there
+    jbtnPlay.addActionListener(btPlayListener());
     add(jbtnPlay);
   }
 
@@ -132,7 +133,8 @@ public class ChessBoard extends JFrame implements ActionListener {
             if (!jtxt1.getText().equals("") && !jtxt2.getText().equals("")) {
               cbBoard = new Start(boardSize, ChessBoard.this, 0, first);
             } else {
-                //Start player vs Computer version, an Hidden Easter egg to avoid people only inputting one name
+                //Start player vs Computer version
+                //an Hidden Easter egg to avoid people only inputting one name
                 if (jtxt1.getText().equals("")) {
                   first = 2;
                   jtxt1.setText("Computer");
@@ -149,6 +151,7 @@ public class ChessBoard extends JFrame implements ActionListener {
     };
   }
   //It Listens to the click of"exit" and click of "7*6" and "8*7"
+
   @Override
   public void actionPerformed(ActionEvent e) {
     Object source = e.getSource();

@@ -13,6 +13,8 @@ package project;
 
 public class ConnectFour {
   public static void main(String[] args) {
-        new MenuView();
-    }
+    
+    new MenuView();
+    
+  }
 }
