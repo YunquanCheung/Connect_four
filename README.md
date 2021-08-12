@@ -1,5 +1,7 @@
 ## PartD
-
+改完记得run一下那个StyleCheck
+改得老费劲了
+```java -jar checkstyle.jar -c styleFileSummer2021.xml YOURCODE.java > styleReport.txt
 1. Conditionals (if-else)
 2. Complex conditionals (nested if-else)
 3. Loops
